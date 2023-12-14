@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "pentrist",
+  host: "bbilwoqg4l9vaqaluiee-mysql.services.clever-cloud.com",
+  user: "u12pizxdgxmtviog",
+  password: "u12pizxdgxmtviog",
+  database: "bbilwoqg4l9vaqaluiee",
 });
 
 app.get("/catgories", (req, res) => {
@@ -23,7 +23,6 @@ app.get("/catgories", (req, res) => {
     return res.json(data);
   });
 });
-
 
 app.get("/card", (req, res) => {
   const q = "select * from card";
@@ -97,6 +96,6 @@ app.post("/card", (req, res) => {
   });
 });
 
-app.listen(8800, () => {
+app.listen(3306, () => {
   console.log("Connected to backend.");
 });
