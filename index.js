@@ -1,16 +1,26 @@
 import mysql from "mysql";
 import cors from "cors";
 import express from "express";
-
+import "dotenv/config";
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Connect to MySQL database in clever cloud
+// const db = mysql.createConnection({
+//   host: "bbilwoqg4l9vaqaluiee-mysql.services.clever-cloud.com",
+//   user: "u12pizxdgxmtviog",
+//   password: "u12pizxdgxmtviog",
+//   database: "bbilwoqg4l9vaqaluiee",
+// });
+
+// console.log(process.env.DB_HOST);
+
 const db = mysql.createConnection({
-  host: "bbilwoqg4l9vaqaluiee-mysql.services.clever-cloud.com",
-  user: "u12pizxdgxmtviog",
-  password: "u12pizxdgxmtviog",
-  database: "bbilwoqg4l9vaqaluiee",
+  host: process.env.DB_HOST,
+  user: process.env.USER,
+  password: process.env.PASS,
+  database: process.env.NAME,
 });
 
 app.get("/catgories", (req, res) => {
@@ -96,6 +106,6 @@ app.post("/card", (req, res) => {
   });
 });
 
-app.listen(3306, () => {
+app.listen(8800, () => {
   console.log("Connected to backend.");
 });
